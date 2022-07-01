@@ -109,6 +109,7 @@ local config = {
           require("onedark").load()
         end,
       },
+      { "simrat39/rust-tools.nvim" },
       -- { "andweeb/presence.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
@@ -218,14 +219,45 @@ local config = {
     servers = {
       -- "pyright"
     },
+    -- easily add or disable built in mappings added during LSP attaching
+    mappings = {
+      n = {
+        -- ["<leader>lf"] = false -- disable formatting keymap
+      },
+    },
     -- add to the server on_attach function
     -- on_attach = function(client, bufnr)
     -- end,
 
     -- override the lsp installer server-registration function
-    -- server_registration = function(server, opts)
-    --   require("lspconfig")[server.name].setup(opts)
-    -- end
+    server_registration = function(server, opts)
+      if server == "rust_analyzer" then
+        require("rust-tools").setup {
+          tools = {
+            on_initialized = function()
+              vim.cmd [[
+            autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
+          ]]
+            end,
+          },
+          server = {
+            settings = {
+              ["rust-analyzer"] = {
+                lens = {
+                  enable = true,
+                },
+                checkOnSave = {
+                  command = "clippy",
+                },
+              },
+            },
+          },
+        }
+        goto continue
+      end
+      require("lspconfig")[server].setup(opts)
+      ::continue::
+    end,
 
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
@@ -316,5 +348,3 @@ local config = {
 }
 
 return config
-
-
