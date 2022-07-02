@@ -36,9 +36,9 @@ local config = {
     },
     o = {
       -- Linux Desktop
-      -- guifont = "VictorMono Nerd Font:h10"
+      guifont = "VictorMono Nerd Font:h11"
       -- neovide.exe --wsl
-      guifont = "VictorMono NF:h10.5",
+      --guifont = "VictorMono NF:h10.5",
     },
   },
 
@@ -302,20 +302,20 @@ local config = {
       command = "source <afile> | PackerSync",
     })
 
-    vim.cmd [[
-      let g:clipboard = {
-        \   'name': 'win32yank-wsl',
-        \   'copy': {
-        \      '+': 'win32yank.exe -i --crlf',
-        \      '*': 'win32yank.exe -i --crlf',
-        \    },
-        \   'paste': {
-        \      '+': 'win32yank.exe -o --lf',
-        \      '*': 'win32yank.exe -o --lf',
-        \   },
-        \   'cache_enabled': 0,
-        \ }
-    ]]
+    -- vim.cmd [[
+    --   let g:clipboard = {
+    --     \   'name': 'win32yank-wsl',
+    --     \   'copy': {
+    --     \      '+': 'win32yank.exe -i --crlf',
+    --     \      '*': 'win32yank.exe -i --crlf',
+    --     \    },
+    --     \   'paste': {
+    --     \      '+': 'win32yank.exe -o --lf',
+    --     \      '*': 'win32yank.exe -o --lf',
+    --     \   },
+    --     \   'cache_enabled': 0,
+    --     \ }
+    -- ]]
 
     -- vim.cmd [[
     --   let g:clipboard = {
