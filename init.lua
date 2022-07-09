@@ -30,15 +30,15 @@ local config = {
       mapleader = " ", -- sets vim.g.mapleader
 
       -- neovide
-      neovide_transparency = 0.90,
+      neovide_transparency = 0.92,
       neovide_cursor_vfx_mode = "railgun",
       neovide_remember_window_size = true,
     },
     o = {
       -- Linux Desktop
-      -- guifont = "VictorMono Nerd Font:h10"
+      guifont = "VictorMono Nerd Font:h11"
       -- neovide.exe --wsl
-      guifont = "VictorMono NF:h10.5",
+      -- guifont = "VictorMono NF:h10.5",
     },
   },
 
