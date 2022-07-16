@@ -4,7 +4,7 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
+    channel = "nightly", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
@@ -38,7 +38,7 @@ local config = {
       -- Linux Desktop
       guifont = "VictorMono Nerd Font:h11"
       -- neovide.exe --wsl
-      -- guifont = "VictorMono NF:h10.5",
+      -- guifont = "VictorMono NF:h11",
     },
   },
 
@@ -162,7 +162,7 @@ local config = {
       ensure_installed = { "sumneko_lua", "tsserver", "gopls", "rust_analyzer" },
     },
     packer = {
-      compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
+      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
     },
     -- ["neo-tree"] = {
     --   window = {
@@ -280,6 +280,18 @@ local config = {
   diagnostics = {
     virtual_text = true,
     underline = true,
+  },
+
+  mappings = {
+    -- first key is the mode
+    n = {
+      -- second key is the lefthand side of the map
+      ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+    },
+    t = {
+      -- setting a mapping to false will disable it
+      -- ["<esc>"] = false,
+    },
   },
 
   -- This function is run last
